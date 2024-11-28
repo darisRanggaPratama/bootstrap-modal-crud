@@ -70,7 +70,7 @@ include 'includes/header.php';
 
     </div>
 
-    <table class="table table-striped">
+    <table class="table table-bordered table-hover table-striped">
         <thead>
         <tr>
             <th>No</th>
