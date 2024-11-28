@@ -1,0 +1,68 @@
+<?php
+session_start();
+require_once 'config/database.php';
+
+$db = new Database();
+$conn = $db->getConnection();
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (!isset($_FILES['csvFile']) || $_FILES['csvFile']['error'] !== UPLOAD_ERR_OK) {
+        $_SESSION['upload_message'] = "Error: No file uploaded or upload failed.";
+        header('Location: index.php');
+        exit();
+    }
+
+    $file = $_FILES['csvFile'];
+    $handle = fopen($file['tmp_name'], 'r');
+
+    // Skip header
+    fgetcsv($handle, 0, ';');
+
+    $stmt = $conn->prepare("INSERT INTO upah (nik, name, gaji, ptkp) VALUES (:nik, :name, :gaji, :ptkp)");
+
+    $successCount = 0;
+    $failedCount = 0;
+
+    while (($data = fgetcsv($handle, 0, ';')) !== false) {
+        // Ensure 4 columns
+        if (count($data) !== 4) {
+            $failedCount++;
+            continue;
+        }
+
+        // Sanitize and validate inputs
+        $nik = trim($data[0]);
+        $name = trim($data[1]);
+
+        // Convert gaji to non-negative integer
+        $gaji = max(0, (int)str_replace(['.', ','], '', $data[2]));
+
+        $ptkp = trim($data[3]);
+
+        try {
+            $stmt->bindParam(':nik', $nik);
+            $stmt->bindParam(':name', $name);
+            $stmt->bindParam(':gaji', $gaji, PDO::PARAM_INT);
+            $stmt->bindParam(':ptkp', $ptkp);
+
+            if ($stmt->execute()) {
+                $successCount++;
+            } else {
+                $failedCount++;
+            }
+        } catch (PDOException $e) {
+            $failedCount++;
+        }
+    }
+
+    fclose($handle);
+
+    $_SESSION['upload_message'] = "Import completed. $successCount records added, $failedCount records failed.";
+    header('Location: index.php');
+    exit();
+} else {
+    header('Location: index.php');
+    exit();
+}
+?>
+

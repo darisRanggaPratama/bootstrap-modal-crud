@@ -1,0 +1,22 @@
+/* assets/css/styles.css */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: -250px;
+    width: 250px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+    padding-top: 56px;
+}
+
+.sidebar.show {
+    left: 0;
+}
+
+.sidebar-toggle {
+    position: fixed;
+    top: 10px;
+    left: 10px;
+    z-index: 1050;
+}
