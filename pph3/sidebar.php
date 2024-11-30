@@ -3,13 +3,13 @@
     <div class="sidebar-sticky">
         <ul class="nav flex-column">
             <li class="nav-item">
-                <a class="nav-link" href="index.php">Dashboard</a>
+                <a class="nav-link" href="index.php">Home</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="pages/create.php">Tambah Data</a>
+                <a class="nav-link" href="pages/create.php">Add Data</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="search.php">Cari Data</a>
+                <a class="nav-link" href="search.php">Search</a>
             </li>
         </ul>
     </div>

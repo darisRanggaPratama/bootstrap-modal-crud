@@ -19,7 +19,7 @@ try {
     $stmt->execute([':id' => $id]);
 
     // Redirect ke halaman utama dengan pesan sukses
-    header("Location: ../index.php?message=Data berhasil dihapus");
+    header("Location: ../index.php?message=Data_berhasil_dihapus");
     exit();
 } catch(PDOException $e) {
     // Jika terjadi kesalahan, redirect dengan pesan error

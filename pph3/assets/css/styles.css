@@ -20,3 +20,27 @@
     left: 10px;
     z-index: 1050;
 }
+
+.all-form {
+    margin-left: 40px;
+    margin-right: 20px;
+}
+
+input[type="text"] {
+    width: 300px;
+}
+
+.select-option {
+    width: 300px;
+}
+
+.form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    width: 45%;
+}
+
