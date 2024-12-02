@@ -22,7 +22,7 @@ $stmt->bindParam(':recordsPerPage', $recordsPerPage, PDO::PARAM_INT);
 $stmt->execute();
 $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-$no = 1;
+$no = $offset + 1;
 ?>
 
 <!DOCTYPE html>
@@ -134,7 +134,7 @@ $no = 1;
 
             <!-- Pagination -->
             <nav>
-                <ul class="pagination">
+                <ul class="pagination justify-content-center">
                     <?php for ($i = 1; $i <= $totalPages; $i++): ?>
                         <li class="page-item <?= ($i == $page) ? 'active' : '' ?>">
                             <a class="page-link" href="?page=<?= $i ?>"><?= $i ?></a>
