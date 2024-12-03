@@ -16,7 +16,7 @@ $totalRecords = $totalRecordsQuery->fetchColumn();
 $totalPages = ceil($totalRecords / $recordsPerPage);
 
 // Fetch Records
-$stmt = $conn->prepare("SELECT * FROM upah LIMIT :offset, :recordsPerPage");
+$stmt = $conn->prepare("SELECT * FROM upah ORDER BY ptkp DESC, name ASC LIMIT :offset, :recordsPerPage");
 $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
 $stmt->bindParam(':recordsPerPage', $recordsPerPage, PDO::PARAM_INT);
 $stmt->execute();

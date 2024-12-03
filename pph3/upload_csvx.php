@@ -22,46 +22,6 @@ function validateCSVData($data) {
         return null;
     }
 
-    $hadir_pusat = filter_var($data['hadir_pusat'], FILTER_VALIDATE_INT);
-    if ($hadir_pusat === false || $hadir_pusat < 0) {
-        return null;
-    }
-
-    $hadir_proyek = filter_var($data['hadir_proyek'], FILTER_VALIDATE_INT);
-    if ($hadir_proyek === false || $hadir_proyek < 0) {
-        return null;
-    }
-
-    $konsumsi = filter_var($data['konsumsi'], FILTER_VALIDATE_INT);
-    if ($konsumsi === false || $konsumsi < 0) {
-        return null;
-    }
-
-    $lembur = filter_var($data['lembur'], FILTER_VALIDATE_INT);
-    if ($lembur === false || $lembur < 0) {
-        return null;
-    }
-
-    $tunjang_lain = filter_var($data['tunjang_lain'], FILTER_VALIDATE_INT);
-    if ($tunjang_lain === false || $tunjang_lain < 0) {
-        return null;
-    }
-
-    $jkk = filter_var($data['jkk'], FILTER_VALIDATE_INT);
-    if ($jkk === false || $jkk < 0) {
-        return null;
-    }
-
-    $jkm = filter_var($data['jkm'], FILTER_VALIDATE_INT);
-    if ($jkm === false || $jkm < 0) {
-        return null;
-    }
-
-    $sehat = filter_var($data['sehat'], FILTER_VALIDATE_INT);
-    if ($sehat === false || $sehat < 0) {
-        return null;
-    }
-
     // Validate PTKP: must be a string max 5 characters
     if (strlen($data['ptkp']) > 5) {
         return null;
@@ -71,14 +31,6 @@ function validateCSVData($data) {
         'nik' => trim($data['nik']),
         'name' => trim($data['name']),
         'gaji' => $gaji,
-        'hadir_pusat' => $hadir_pusat,
-        'hadir_proyek' => $hadir_proyek,
-        'konsumsi' => $konsumsi,
-        'lembur' => $lembur,
-        'tunjang_lain' => $tunjang_lain,
-        'jkk' => $jkk,
-        'jkm' => $jkm,
-        'sehat' => $sehat,
         'ptkp' => trim($data['ptkp']) ?: '-'
     ];
 }
@@ -119,19 +71,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     try {
         // Prepare insert statement
-        $stmt = $conn->prepare("INSERT INTO upah (nik, name, gaji, hadir_pusat, hadir_proyek, konsumsi, lembur, tunjang_lain, jkk, jkm, sehat, ptkp) 
-VALUES (:nik, :name, :gaji, :hadir_pusat, :hadir_proyek, :konsumsi, :lembur, :tunjang_lain, :jkk, :jkm, :sehat, :ptkp) 
+        $stmt = $conn->prepare("INSERT INTO upah (nik, name, gaji, ptkp) VALUES (:nik, :name, :gaji, :ptkp) 
                                 ON DUPLICATE KEY UPDATE 
                                 name = VALUES(name), 
-                                gaji = VALUES(gaji),
-                                hadir_pusat = VALUES(hadir_pusat), 
-                                hadir_proyek = VALUES(hadir_proyek), 
-                                konsumsi = VALUES(konsumsi), 
-                                lembur = VALUES(lembur), 
-                                tunjang_lain = VALUES(tunjang_lain), 
-                                jkk = VALUES(jkk), 
-                                jkm = VALUES(jkm), 
-                                sehat = VALUES(sehat),
+                                gaji = VALUES(gaji), 
                                 ptkp = VALUES(ptkp)");
 
         // Skip header row
@@ -147,15 +90,7 @@ VALUES (:nik, :name, :gaji, :hadir_pusat, :hadir_proyek, :konsumsi, :lembur, :tu
                 'nik' => $data[0] ?? '',
                 'name' => $data[1] ?? '',
                 'gaji' => $data[2] ?? '',
-                'hadir_pusat' => $data[3] ?? '',
-                'hadir_proyek' => $data[4] ?? '',
-                'konsumsi' => $data[5] ?? '',
-                'lembur' => $data[6] ?? '',
-                'tunjang_lain' => $data[7] ?? '',
-                'jkk' => $data[8] ?? '',
-                'jkm' => $data[9] ?? '',
-                'sehat' => $data[10] ?? '',
-                'ptkp' => $data[11] ?? ''
+                'ptkp' => $data[3] ?? ''
             ];
 
             // Validate and sanitize data
@@ -167,14 +102,6 @@ VALUES (:nik, :name, :gaji, :hadir_pusat, :hadir_proyek, :konsumsi, :lembur, :tu
                     ':nik' => $cleanData['nik'],
                     ':name' => $cleanData['name'],
                     ':gaji' => $cleanData['gaji'],
-                    ':hadir_pusat' => $cleanData['hadir_pusat'],
-                    ':hadir_proyek' => $cleanData['hadir_proyek'],
-                    ':konsumsi' => $cleanData['konsumsi'],
-                    ':lembur' => $cleanData['lembur'],
-                    ':tunjang_lain' => $cleanData['tunjang_lain'],
-                    ':jkk' => $cleanData['jkk'],
-                    ':jkm' => $cleanData['jkm'],
-                    ':sehat' => $cleanData['sehat'],
                     ':ptkp' => $cleanData['ptkp']
                 ]);
                 $successCount++;

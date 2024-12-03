@@ -8,7 +8,7 @@ $conn = $db->getConnection();
 
 try {
     // Query to fetch all records
-    $stmt = $conn->query("SELECT nik, name, gaji, ptkp FROM upah");
+    $stmt = $conn->query("SELECT nik, name, gaji, hadir_pusat, hadir_proyek, konsumsi, lembur, tunjang_lain, jkk, jkm, sehat, bruto, rate, pph, ptkp, hrf FROM view_pph");
     $records = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     // Set headers for file download
@@ -21,7 +21,7 @@ try {
     $output = fopen('php://output', 'w');
 
     // Write CSV headers
-    fputcsv($output, ['NIK', 'Name', 'Gaji', 'PTKP'], ';');
+    fputcsv($output, ['nik', 'name', 'gaji', 'hadir_pusat', 'hadir_proyek', 'konsumsi', 'lembur', 'tunjang_lain', 'jkk', 'jkm', 'sehat', 'bruto', 'rate', 'pph', 'ptkp', 'hrf'], ';');
 
     // Write data rows
     foreach ($records as $record) {
@@ -29,7 +29,19 @@ try {
             $record['nik'],
             $record['name'],
             $record['gaji'],
-            $record['ptkp']
+            $record['hadir_pusat'],
+            $record['hadir_proyek'],
+            $record['konsumsi'],
+            $record['lembur'],
+            $record['tunjang_lain'],
+            $record['jkk'],
+            $record['jkm'],
+            $record['sehat'],
+            $record['bruto'],
+            $record['rate'],
+            $record['pph'],
+            $record['ptkp'],
+            $record['hrf']
         ], ';');
     }
 

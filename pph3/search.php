@@ -12,7 +12,7 @@ $recordsPerPage = 15;
 $offset = ($page - 1) * $recordsPerPage;
 
 // Hitung total hasil pencarian
-$countStmt = $conn->prepare("SELECT COUNT(*) FROM upah WHERE $searchField LIKE :searchTerm");
+$countStmt = $conn->prepare("SELECT COUNT(*) FROM view_pph WHERE $searchField LIKE :searchTerm");
 $countStmt->execute(['searchTerm' => "%$searchTerm%"]);
 $totalResults = $countStmt->fetchColumn();
 
@@ -20,7 +20,7 @@ $totalResults = $countStmt->fetchColumn();
 $totalPages = ceil($totalResults / $recordsPerPage);
 
 // Fetch Records dengan Pagination
-$stmt = $conn->prepare("SELECT * FROM upah WHERE $searchField LIKE :searchTerm ORDER BY ptkp DESC LIMIT :offset, :recordsPerPage");
+$stmt = $conn->prepare("SELECT * FROM view_pph WHERE $searchField LIKE :searchTerm LIMIT :offset, :recordsPerPage");
 $stmt->bindValue(':searchTerm', "%$searchTerm%", PDO::PARAM_STR);
 $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
 $stmt->bindValue(':recordsPerPage', $recordsPerPage, PDO::PARAM_INT);
@@ -85,7 +85,11 @@ $no = $offset + 1;
                         <th>BPJS:JKK</th>
                         <th>BPJS:JKM</th>
                         <th>BPJS Sehat</th>
+                        <th>Bruto</th>
+                        <th>Rate</th>
+                        <th>PPh</th>
                         <th>PTKP</th>
+                        <th>Huruf</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -103,7 +107,11 @@ $no = $offset + 1;
                             <td><?= number_format($result['jkk'], 0, ',', '.') ?></td>
                             <td><?= number_format($result['jkm'], 0, ',', '.') ?></td>
                             <td><?= number_format($result['sehat'], 0, ',', '.') ?></td>
+                            <td><?= number_format($result['bruto'], 0, ',', '.') ?></td>
+                            <td><?= number_format($result['rate'], 2, ',', '.') ?></td>
+                            <td><?= number_format($result['pph'], 0, ',', '.') ?></td>
                             <td><?= htmlspecialchars($result['ptkp']) ?></td>
+                            <td><?= htmlspecialchars($result['hrf']) ?></td>
                         </tr>
                     <?php endforeach; ?>
                     </tbody>

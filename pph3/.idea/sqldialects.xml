@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="SqlDialectMappings">
+    <file url="file://$APPLICATION_CONFIG_DIR$/consoles/db/f28c712f-a89a-4861-a4fa-0ad2ff82dee1/console.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$" dialect="MySQL" />
     <file url="PROJECT" dialect="MySQL" />
   </component>
