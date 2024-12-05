@@ -12,13 +12,7 @@
             <li>
                 <a href="page1.php" class="nav-link sidebar-link">
                     <i class="bi bi-file-text me-2"></i>
-                    Page 1
-                </a>
-            </li>
-            <li>
-                <a href="page2.php" class="nav-link sidebar-link">
-                    <i class="bi bi-file-text me-2"></i>
-                    Page 2
+                    Sign Out
                 </a>
             </li>
         </ul>

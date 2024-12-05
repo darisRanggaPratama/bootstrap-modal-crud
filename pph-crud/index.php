@@ -94,24 +94,24 @@ $no = 1;
                             <li>
                                 <button class="btn btn-success" data-bs-toggle="modal"
                                         data-bs-target="#addEmployeeModal">
-                                    <i class="bi bi-plus"></i> Add
+                                    <i class="bi bi-plus"></i> Add Data
                                 </button>
                             </li>
                             <li>
                                 <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#uploadModal">
-                                    <i class="bi bi-upload"></i> Upload
+                                    <i class="bi bi-upload"></i> Send CSV
                                 </button>
                             </li>
                             <li>
                                 <form method="post" action="download.php" class="d-inline">
                                     <button type="submit" class="btn btn-secondary">
-                                        <i class="bi bi-download"></i> Download
+                                        <i class="bi bi-download"></i> G e t  CSV
                                     </button>
                                 </form>
                             </li>
                             <li>
                                 <button class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#eraseAllModal">
-                                    <i class="bi bi-trash3"></i> Erase All
+                                    <i class="bi bi-trash3"></i> Erase ALL
                                 </button>
                             </li>
                         </ul>

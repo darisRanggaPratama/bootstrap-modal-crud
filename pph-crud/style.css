@@ -63,3 +63,7 @@
 .modal-footer {
     border-top-color: #dee2e6;
 }
+
+.form-control {
+    text-align: center;
+}
