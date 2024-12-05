@@ -49,3 +49,17 @@
 .content.shifted {
     margin-left: 250px;
 }
+
+.btn-danger:hover {
+    background-color: #dc3545;
+    border-color: #dc3545;
+    opacity: 0.9;
+}
+
+.modal-header.text-danger {
+    border-bottom-color: #dc3545;
+}
+
+.modal-footer {
+    border-top-color: #dee2e6;
+}

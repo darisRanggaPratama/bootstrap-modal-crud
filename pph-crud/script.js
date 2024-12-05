@@ -54,3 +54,19 @@ document.querySelectorAll('.edit-btn').forEach(button => {
         document.getElementById('editPtkp').value = this.getAttribute('data-ptkp');
     });
 });
+
+// Tambahkan di file script.js
+document.addEventListener('DOMContentLoaded', function() {
+    const eraseAllForm = document.querySelector('#eraseAllModal form');
+    if (eraseAllForm) {
+        eraseAllForm.addEventListener('submit', function(e) {
+            const confirmText = 'Please type DELETE to confirm';
+            const userInput = prompt(confirmText);
+
+            if (userInput !== 'DELETE') {
+                e.preventDefault();
+                alert('Operation cancelled. Data was not deleted.');
+            }
+        });
+    }
+});

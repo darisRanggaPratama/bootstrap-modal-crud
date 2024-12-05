@@ -1,6 +1,6 @@
 <div class="sidebar" id="sidebar">
     <div class="d-flex flex-column flex-shrink-0 p-3 text-white">
-        <span class="fs-4 mb-3">Menu</span>
+        <span class="fs-4 mb-3">Malea Energy</span>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
             <li class="nav-item">

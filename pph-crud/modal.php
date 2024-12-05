@@ -154,3 +154,54 @@
         </div>
     </div>
 </div>
+
+<!-- Add this modal at the end of the file, before closing body tag -->
+<div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <form method="post" action="process.php" enctype="multipart/form-data">
+                <div class="modal-header">
+                    <h5 class="modal-title">Upload CSV File</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" name="action" value="upload">
+                    <div class="mb-3">
+                        <label for="csvFile" class="form-label">Select CSV File</label>
+                        <input type="file" class="form-control" id="csvFile" name="csvFile" accept=".csv" required>
+                        <small class="text-muted">
+                            File should be CSV format with semicolon (;) separator and columns:<br>
+                            nik; name; gaji; hadir_pusat; hadir_proyek; konsumsi; lembur; <br>tunjang_lain; jkk; jkm; sehat; ptkp
+                        </small>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Tambahkan di index.php sebelum closing tag body -->
+<div class="modal fade" id="eraseAllModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">⚠️ Warning: Delete All Data</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p class="text-danger fw-bold">Warning: This action cannot be undone!</p>
+                <p>Are you sure you want to delete ALL data from the table and reset the ID counter?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Cancel</button>
+                <form action="erase_all.php" method="POST" class="d-inline">
+                    <button type="submit" class="btn btn-danger">Yes, Delete All</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
