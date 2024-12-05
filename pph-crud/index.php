@@ -78,10 +78,16 @@ $no = 1;
     <!-- Inside the body, before the container-fluid div -->
     <div class="container-fluid d-flex justify-content-between align-items-center mb-3">
         <?= $alert ?>
-        <button class="btn btn-primary mt-3" id="sidebarToggle">
-            <i class="bi bi-list"></i>
-        </button>
-        <h4>Data PPh21</h4>
+        <div class="row mb-3">
+            <div class="col-12">
+                <div class="col text-end">
+                    <button class="btn btn-primary mt-0" id="sidebarToggle">
+                        <i class="bi bi-list"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <h4>Data PPh21 Karyawan</h4>
         <div class="row mb-3">
             <div class="col-12">
                 <div class="col text-end">
@@ -105,7 +111,7 @@ $no = 1;
                             <li>
                                 <form method="post" action="download.php" class="d-inline">
                                     <button type="submit" class="btn btn-secondary">
-                                        <i class="bi bi-download"></i> G e t  CSV
+                                        <i class="bi bi-download"></i> G e t CSV
                                     </button>
                                 </form>
                             </li>

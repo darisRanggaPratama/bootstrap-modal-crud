@@ -70,3 +70,26 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
+
+// Refresh Button Functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const refreshButton = document.getElementById('refreshButton');
+    if (refreshButton) {
+        refreshButton.addEventListener('click', function() {
+            // Show loading spinner
+            const spinner = `
+                <div class="spinner-border text-primary" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+            `;
+            this.innerHTML = spinner + ' Refreshing...';
+            this.disabled = true;
+
+            // Perform page reload
+            setTimeout(() => {
+                location.reload();
+            }, 1000); // 1000 = 1 second
+        });
+    }
+});
+
