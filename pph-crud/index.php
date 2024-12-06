@@ -16,7 +16,7 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $entries;
 
 // Build query with search conditions
-$query = "SELECT * FROM upah WHERE 1=1";
+$query = "SELECT * FROM view_pph WHERE 1=1";
 if (!empty($search)) {
     $query .= " AND (nik LIKE :search OR name LIKE :search OR gaji LIKE :search OR ptkp LIKE :search)";
 }
@@ -77,7 +77,6 @@ $no = 1;
 
     <!-- Inside the body, before the container-fluid div -->
     <div class="container-fluid d-flex justify-content-between align-items-center mb-3">
-        <?= $alert ?>
         <div class="row mb-3">
             <div class="col-12">
                 <div class="col text-end">
@@ -88,6 +87,7 @@ $no = 1;
             </div>
         </div>
         <h4>Data PPh21 Karyawan</h4>
+        <?= $alert ?>
         <div class="row mb-3">
             <div class="col-12">
                 <div class="col text-end">
@@ -161,15 +161,19 @@ $no = 1;
                 <th>NIK</th>
                 <th>Name</th>
                 <th>Gaji</th>
-                <th>Hadir Pusat</th>
-                <th>Hadir Proyek</th>
+                <th>Hdr Pst</th>
+                <th>Hdr Pry</th>
                 <th>Konsumsi</th>
                 <th>Lembur</th>
-                <th>Tunjangan Lain</th>
+                <th>Tunj Lain</th>
                 <th>JKK</th>
                 <th>JKM</th>
                 <th>Sehat</th>
+                <th>Bruto</th>
+                <th>Rate</th>
+                <th>PPh</th>
                 <th>PTKP</th>
+                <th>Hrf</th>
                 <th>Drop</th>
             </tr>
             </thead>
@@ -210,10 +214,14 @@ $no = 1;
                     <td><?= number_format($row['jkk'], 0, ',', '.') ?></td>
                     <td><?= number_format($row['jkm'], 0, ',', '.') ?></td>
                     <td><?= number_format($row['sehat'], 0, ',', '.') ?></td>
+                    <td><?= number_format($row['bruto'], 0, ',', '.') ?></td>
+                    <td><?= number_format($row['rate'], 2, ',', '.') ?></td>
+                    <td><?= number_format($row['pph'], 0, ',', '.') ?></td>
                     <td><?= htmlspecialchars($row['ptkp']) ?></td>
+                    <td><?= htmlspecialchars($row['hrf']) ?></td>
                     <td>
                         <a href="delete.php?id=<?= $row['id'] ?>" class="btn btn-sm btn-danger delete-btn"
-                           onclick="return confirm('Apakah Anda yakin ingin menghapus data ini?\n\n<?= htmlspecialchars($row['nik']) ?>   <?= htmlspecialchars($row['name']) ?>')">
+                           onclick="return confirm('Are you sure to delete this data? \n\n <?= htmlspecialchars($row['nik']) ?>   <?= htmlspecialchars($row['name']) ?>')">
                             <i class="bi bi-trash"></i>
                         </a>
                     </td>
