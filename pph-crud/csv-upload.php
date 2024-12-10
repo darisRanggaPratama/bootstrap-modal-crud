@@ -1,5 +1,7 @@
 <?php
-// upload.php
+session_start();
+
+// csv-upload.php
 require_once 'database.php';
 require_once 'functions.php';
 

@@ -10,14 +10,14 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a href="index.php" class="nav-link sidebar-link active">
+                <a href="home.php" class="nav-link sidebar-link active">
                     <i class="bi bi-house me-2"></i>
                     Home
                 </a>
             </li>
             <li>
-                <a href="page1.php" class="nav-link sidebar-link">
-                    <i class="bi bi-file-text me-2"></i>
+                <a href="logout.php" class="nav-link sidebar-link">
+                    <i class="bi bi-box-arrow-right me-2"></i>
                     Sign Out
                 </a>
             </li>

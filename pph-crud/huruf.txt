@@ -1,0 +1,22 @@
+DELIMITER //
+
+CREATE FUNCTION huruf(kode VARCHAR(4))
+RETURNS CHAR(1)
+DETERMINISTIC
+BEGIN
+    DECLARE ptkp VARCHAR(4);
+    
+    -- Konversi input ke uppercase
+    SET ptkp = UPPER(kode);
+    
+    -- Logic penentuan huruf berdasarkan PTKP
+    RETURN CASE 
+        WHEN ptkp IN ('TK/0', 'TK/1', 'K/0') THEN 'A'
+        WHEN ptkp IN ('TK/2', 'TK/3', 'K/1', 'K/2') THEN 'B'
+        WHEN ptkp = 'K/3' THEN 'C'
+        ELSE 'null'
+    END;
+    
+END //
+
+DELIMITER ;

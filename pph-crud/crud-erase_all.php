@@ -1,8 +1,8 @@
 <?php
+session_start();
+
 require_once 'database.php';
 require_once 'functions.php';
-
-session_start();
 
 try {
     $db = new Database();
@@ -36,11 +36,11 @@ try {
     $_SESSION['alert'] = displayAlert('danger', 'Error: Unable to delete all data. ' . $e->getMessage());
 
     // Log the error
-    error_log("Error in erase_all.php: " . $e->getMessage());
+    error_log("Error in crud-erase_all.php: " . $e->getMessage());
 }
 
 // Redirect back to index page
-header('Location: index.php');
+header('Location: home.php');
 exit;
 ?>
 

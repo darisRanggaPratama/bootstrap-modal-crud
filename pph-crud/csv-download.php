@@ -1,9 +1,9 @@
 <?php
-// download.php - buat file baru terpisah
+session_start();
+
+// csv-download.php - buat file baru terpisah
 require_once 'database.php';
 require_once 'functions.php';
-
-session_start();
 
 try {
     $db = new Database();
@@ -20,7 +20,7 @@ try {
 
     if (empty($results)) {
         $_SESSION['alert'] = displayAlert('warning', 'No data available to download');
-        header('Location: index.php');
+        header('Location: home.php');
         exit;
     }
 
@@ -58,6 +58,8 @@ try {
 
 } catch (Exception $e) {
     $_SESSION['alert'] = displayAlert('danger', 'Download error: ' . $e->getMessage());
-    header('Location: index.php');
+    header('Location: home.php');
     exit;
 }
+?>
+

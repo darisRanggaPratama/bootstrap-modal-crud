@@ -1,9 +1,9 @@
 <?php
+session_start();
+
 // process.php
 require_once 'database.php';
 require_once 'functions.php';
-
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     if (isset($_POST['action'])) {
@@ -11,14 +11,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             // Handle upload
             if ($_FILES['csvFile']['error'] !== UPLOAD_ERR_OK) {
                 $_SESSION['alert'] = displayAlert('danger', 'File upload failed');
-                header('Location: index.php');
+                header('Location: home.php');
                 exit;
             }
 
             $file = $_FILES['csvFile'];
             if (pathinfo($file['name'], PATHINFO_EXTENSION) !== 'csv') {
                 $_SESSION['alert'] = displayAlert('danger', 'File must be a CSV');
-                header('Location: index.php');
+                header('Location: home.php');
                 exit;
             }
 
@@ -86,13 +86,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         } elseif ($_POST['action'] === 'download') {
             // Redirect to dedicated download handler
-            header('Location: download.php');
+            header('Location: csv-download.php');
             exit;
         }
     }
 }
 
-header('Location: index.php');
+header('Location: home.php');
 exit;
 ?>
 

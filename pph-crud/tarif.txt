@@ -1,0 +1,27 @@
+DELIMITER //
+
+CREATE FUNCTION tarif(kode VARCHAR(10), nominal DOUBLE) 
+RETURNS DOUBLE
+DETERMINISTIC
+BEGIN
+    DECLARE ptkp VARCHAR(10);
+    DECLARE hasil DOUBLE;
+    
+    -- Convert kode to uppercase
+    SET ptkp = UPPER(kode);
+    
+    -- Check category and calculate rate
+    IF ptkp IN ('TK/0', 'TK/1', 'K/0') THEN
+        SET hasil = kategori_a(nominal);
+    ELSEIF ptkp IN ('TK/2', 'TK/3', 'K/1', 'K/2') THEN 
+        SET hasil = kategori_b(nominal);
+    ELSEIF ptkp = 'K/3' THEN
+        SET hasil = kategori_c(nominal);
+    ELSE
+        SET hasil = 0;
+    END IF;
+    
+    RETURN hasil;
+END //
+
+DELIMITER ;

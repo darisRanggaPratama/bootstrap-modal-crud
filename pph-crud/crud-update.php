@@ -1,8 +1,8 @@
 <?php
+session_start();
+
 require_once 'database.php';
 require_once 'functions.php';
-
-session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     try {
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['alert'] = displayAlert('danger', 'Error: ' . $e->getMessage());
     }
 
-    header('Location: index.php');
+    header('Location: home.php');
     exit();
 }
 

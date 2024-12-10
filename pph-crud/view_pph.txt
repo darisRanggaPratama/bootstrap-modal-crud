@@ -1,0 +1,65 @@
+CREATE OR REPLACE VIEW view_pajak_detail AS
+WITH 
+gaji_detail AS (
+    SELECT 
+        id,
+        nik,
+        name,
+        gaji,
+        hadir_pusat,
+        hadir_proyek,
+        konsumsi,
+        lembur,
+        tunjang_lain,
+        jkk,
+        jkm,
+        sehat,
+        ptkp,
+        (
+            gaji + hadir_pusat + hadir_proyek + 
+            konsumsi + lembur + tunjang_lain + 
+            jkk + jkm + sehat
+        ) AS bruto
+    FROM avengers.upah
+),
+pajak_detail AS (
+    SELECT 
+        gd.id,
+        gd.nik,
+        gd.name,
+        gd.gaji,
+        gd.hadir_pusat,
+        gd.hadir_proyek,
+        gd.konsumsi,
+        gd.lembur,
+        gd.tunjang_lain,
+        gd.jkk,
+        gd.jkm,
+        gd.sehat,
+        gd.ptkp,
+        gd.bruto,
+        tarif(gd.ptkp, gd.bruto) AS rate,
+        FLOOR((tarif(gd.ptkp, gd.bruto) / 100) * gd.bruto) AS pph,
+        huruf(gd.ptkp) AS hrf
+    FROM gaji_detail gd
+)
+SELECT 
+    id,
+    nik,
+    name,
+    gaji,
+    hadir_pusat,
+    hadir_proyek,
+    konsumsi,
+    lembur,
+    tunjang_lain,
+    jkk,
+    jkm,
+    sehat,
+    bruto,
+    rate,
+    pph,
+    ptkp,
+    hrf
+FROM pajak_detail
+ORDER BY hrf, ptkp DESC, gaji;

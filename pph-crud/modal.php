@@ -6,7 +6,7 @@
                 <h5 class="modal-title">Tambah Karyawan Baru</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form action="create.php" method="POST">
+            <form action="crud-create.php" method="POST">
                 <div class="modal-body">
                     <div class="mb-3">
                         <label class="form-label">NIK</label>
@@ -83,7 +83,7 @@
                 <h5 class="modal-title">Edit Karyawan</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-            <form action="update.php" method="POST">
+            <form action="crud-update.php" method="POST">
                 <input type="hidden" name="id" id="editId">
                 <div class="modal-body">
                     <div class="mb-3">
@@ -155,7 +155,7 @@
     </div>
 </div>
 
-<!-- Add this modal at the end of the file, before closing body tag -->
+<!-- Upload Employee modal -->
 <div class="modal fade" id="uploadModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -198,7 +198,7 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">No, Cancel</button>
-                <form action="erase_all.php" method="POST" class="d-inline">
+                <form action="crud-erase_all.php" method="POST" class="d-inline">
                     <button type="submit" class="btn btn-danger">Yes, Delete All</button>
                 </form>
             </div>

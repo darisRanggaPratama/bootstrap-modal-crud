@@ -45,7 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['alert'] = displayAlert('danger', 'Error: ' . $e->getMessage());
     }
 
-    header('Location: index.php');
+    header('Location: home.php');
     exit();
 }
 ?>
+
