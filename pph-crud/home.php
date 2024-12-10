@@ -1,10 +1,9 @@
 <?php
 session_start();
 
+// Reference other file
 require_once 'database.php';
 require_once 'functions.php';
-
-
 
 if ($_SESSION['status'] != "sudah_login") {
     header("location:index.php");
