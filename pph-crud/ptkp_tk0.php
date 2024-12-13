@@ -21,7 +21,7 @@ $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 $offset = ($page - 1) * $entries;
 
 // Build query with search conditions
-$query = "SELECT * FROM view_pph WHERE 1=1";
+$query = "SELECT * FROM view_pph WHERE ptkp = 'TK/0'";
 if (!empty($search)) {
     $query .= " AND (nik LIKE :search OR name LIKE :search OR gaji LIKE :search OR ptkp LIKE :search)";
 }

@@ -1,4 +1,4 @@
-CREATE OR REPLACE VIEW view_pajak_detail AS
+CREATE OR REPLACE VIEW view_pph AS
 WITH 
 gaji_detail AS (
     SELECT 
@@ -62,4 +62,4 @@ SELECT
     ptkp,
     hrf
 FROM pajak_detail
-ORDER BY hrf, ptkp DESC, gaji;
+ORDER BY hrf, ptkp, bruto;

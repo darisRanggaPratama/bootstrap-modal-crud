@@ -14,7 +14,7 @@ BEGIN
         WHEN ptkp IN ('TK/0', 'TK/1', 'K/0') THEN 'A'
         WHEN ptkp IN ('TK/2', 'TK/3', 'K/1', 'K/2') THEN 'B'
         WHEN ptkp = 'K/3' THEN 'C'
-        ELSE 'null'
+        ELSE '-'
     END;
     
 END //
