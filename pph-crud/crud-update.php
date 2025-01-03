@@ -65,5 +65,5 @@ if (isset($_GET['id'])) {
         die("Error: " . $e->getMessage());
     }
 }
-?>
+
 

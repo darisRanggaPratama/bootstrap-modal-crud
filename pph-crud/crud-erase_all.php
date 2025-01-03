@@ -42,5 +42,5 @@ try {
 // Redirect back to index page
 header('Location: home.php');
 exit;
-?>
+
 

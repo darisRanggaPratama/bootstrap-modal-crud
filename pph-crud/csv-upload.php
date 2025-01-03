@@ -81,5 +81,5 @@ function handleUpload() {
         return ['success' => false, 'message' => 'Database error: ' . $e->getMessage()];
     }
 }
-?>
+
 

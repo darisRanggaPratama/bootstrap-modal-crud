@@ -12,7 +12,7 @@ try {
     $sql = "SELECT nik, name, gaji, hadir_pusat, hadir_proyek, konsumsi, 
             lembur, tunjang_lain, jkk, jkm, sehat, bruto, rate, pph, ptkp, hrf 
             FROM view_pph 
-            ORDER BY nik";
+            ORDER BY hrf, ptkp, bruto";
 
     $stmt = $conn->prepare($sql);
     $stmt->execute();
@@ -61,5 +61,5 @@ try {
     header('Location: home.php');
     exit;
 }
-?>
+
 
